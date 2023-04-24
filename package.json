@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "mocha --timeout 15000",
-    "start": "nodemon src/app.js"
+    "start": "nodemon src/app.js",
+        "build": "mkdir -p dist && cp -r ./src/* ./dist/"
+
   },
   "keywords": [],
   "author": "",
