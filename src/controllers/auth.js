@@ -24,7 +24,7 @@ exports.Login = async (req,res,next)=>{
             userId:user._id.toString()
         },'crimessssssssssssssssssssssssssssssssssss')
 
-        res.status(200).json({token:token,userId:user._id.toString()})
+        res.status(200).json({token:token,userId:user._id.toString(),role:user.role})
    
         return ;
        
