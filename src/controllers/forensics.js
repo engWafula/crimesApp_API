@@ -1,6 +1,7 @@
 
 const User = require("../models/user")
 const Forensic = require("../models/forensics")
+const Cloudinary = require('../services/cloudinary')
 
 exports.addForensics = async(req,res)=>{
    try {
