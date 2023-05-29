@@ -7,6 +7,7 @@ const router = express.Router()
 router.post("/create",isAuth,forensicController.addForensics)
 
 router.get("/",isAuth,forensicController.getForensics)
+router.get("/:id",isAuth,forensicController.getForensic)
 
 
 module.exports = router 

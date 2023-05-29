@@ -31,3 +31,13 @@ exports.getForensics = async(req,res)=>{
     console.log(error)
   }
 }
+
+exports.getForensic = async(req,res)=>{
+  try {
+    const id = req.params.id
+      const data = await Forensic.findById(id).populate('crimeId')
+      res.status(200).json({data:data})
+  } catch (error) {
+    console.log(error)
+  }
+}
