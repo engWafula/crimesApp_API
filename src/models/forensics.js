@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-
+const Crime = require('./crime')
 const Schema = mongoose.Schema;
 
 const forensicsSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
+  crimeId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Crime',
+    },
   description: {
     type: String,
     required: true,

@@ -4,6 +4,7 @@ const User = require("../models/user")
 exports.addCrime = async (req,res)=>{
    try {
     const {name,description,crimeCode,suspect} = req.body
+    console.log(name,description,crimeCode,suspect)
 
     const user = await User.findById(req.userId)
     if(user.role!="police"){
