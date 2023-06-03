@@ -7,7 +7,7 @@ exports.addForensics = async(req,res)=>{
       const {crimeId,description,photos} = req.body
 
       const user = await User.findById(req.userId)
-      if(user.role!="forensics"||user.role!="forensic"){
+      if(user.role!="forensics"){
         return res.status(401).json({message:"You are not authorised to create a forensic report"})
       }
       const foresics = new Forensic({
