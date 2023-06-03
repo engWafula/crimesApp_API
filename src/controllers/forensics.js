@@ -4,14 +4,14 @@ const Forensic = require("../models/forensics")
 
 exports.addForensics = async(req,res)=>{
    try {
-      const {crimeId,description,photos} = req.body
+      const {name,description,photos} = req.body
 
       const user = await User.findById(req.userId)
       if(user.role!="forensics"){
         return res.status(401).json({message:"You are not authorised to create a forensic report"})
       }
       const foresics = new Forensic({
-        crimeId: crimeId,
+        name:name,
         description:description,
         photos:photos
       })
@@ -25,7 +25,17 @@ exports.addForensics = async(req,res)=>{
 
 exports.getForensics = async(req,res)=>{
   try {
-      const data = await Forensic.find()
+      const data = await Forensic.find().populate('crimeId')
+      res.status(200).json({data:data})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.getForensic = async(req,res)=>{
+  try {
+    const id = req.params.id
+      const data = await Forensic.findById(id).populate('crimeId')
       res.status(200).json({data:data})
   } catch (error) {
     console.log(error)
