@@ -25,7 +25,7 @@ exports.addForensics = async(req,res)=>{
 
 exports.getForensics = async(req,res)=>{
   try {
-      const data = await Forensic.find().populate('crimeId')
+      const data = await Forensic.find().populate('crimeId').sort({ createdAt: -1 });
       res.status(200).json({data:data})
   } catch (error) {
     console.log(error)
