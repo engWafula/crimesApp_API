@@ -10,15 +10,25 @@ exports.addForensics = async(req,res)=>{
       if(user.role!="forensics"){
         return res.status(401).json({message:"You are not authorised to create a forensic report"})
       }
+      const crime = await Forensic.findOne({crimeId:crimeId})
 
-      const foresics = new Forensic({
-        crimeId:crimeId,
-        description:description,
-        photos:photos
-      })
+      if(!crime){
+        const foresics = new Forensic({
+          crimeId:crimeId,
+          description:description,
+          photos:photos
+        })
+  
+        await foresics.save()
+       return  res.status(201).json({message:"report created"})
 
-      await foresics.save()
-      res.status(201).json({message:"report created"})
+      }
+
+      crime.photos.push(...photos);
+      await crime.save();
+    
+     res.status(201).json({ message: "Photos added to existing crime report" });
+
    } catch (error) {
     console.log(error)
    }
