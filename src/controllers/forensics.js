@@ -6,7 +6,7 @@ const { Cloudinary } = require("../services/cloudinary")
 exports.addForensics = async(req,res)=>{
    try {
       const {crimeId,description,photos} = req.body
-       let images
+       let images = []
       const user = await User.findById(req.userId)
       if(user.role!="forensics"){
         return res.status(401).json({message:"You are not authorised to create a forensic report"})
