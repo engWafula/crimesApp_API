@@ -13,6 +13,7 @@ exports.addForensics = async(req,res)=>{
       }
       for(image of photos){
         const url = Cloudinary.upload(image)
+        console.log(url)
          images.push(url)
       }
       const foresics = new Forensic({
