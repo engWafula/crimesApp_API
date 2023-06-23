@@ -1,6 +1,7 @@
-import  cloudinary from  'cloudinary' ;
+const cloudinary = require('cloudinary');
 
-export const Cloudinary = {
+
+exports.Cloudinary = {
     upload: async (image) => {
         // return new Promise((resolve, reject) => {
         const res = await cloudinary.v2.uploader.upload(image, {
