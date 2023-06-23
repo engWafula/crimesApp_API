@@ -16,6 +16,7 @@ exports.addForensics = async(req,res)=>{
         console.log(url)
          images.push(url)
       }
+      console.log(images)
       const foresics = new Forensic({
         crimeId:crimeId,
         description:description,
