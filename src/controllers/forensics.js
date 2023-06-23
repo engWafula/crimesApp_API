@@ -12,7 +12,7 @@ exports.addForensics = async(req,res)=>{
         return res.status(401).json({message:"You are not authorised to create a forensic report"})
       }
       for(image of photos){
-        const url = Cloudinary.upload(image)
+        const url =  await Cloudinary.upload(image)
         console.log(url)
          images.push(url)
       }
