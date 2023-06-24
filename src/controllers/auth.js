@@ -67,8 +67,6 @@ exports.signUp = async (req,res)=>{
    <li>Use this password to login:${password}</li>
    <li>If you were not supposed to have an account with us, please ignore this email.</li>
    </ol>
-   <p>Thank you,</p>
-   <p>Tamper Proof Team</p>
 `;        
 
 await sendEmails(message, email, "Account Creation")
