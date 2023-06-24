@@ -5,7 +5,6 @@ const Forensic = require("../models/forensics")
 exports.addForensics = async(req,res)=>{
    try {
       const {crimeId,description,photos} = req.body
-       let images = []
       const user = await User.findById(req.userId)
       if(user.role!="forensics"){
         return res.status(401).json({message:"You are not authorised to create a forensic report"})
@@ -13,13 +12,15 @@ exports.addForensics = async(req,res)=>{
       const crime = await Forensic.findOne({crimeId:crimeId})
 
       if(!crime){
-        const foresics = new Forensic({
+        const foresic = new Forensic({
           crimeId:crimeId,
           description:description,
           photos:photos
         })
   
-        await foresics.save()
+        await foresic.save()
+        user.forensics.push(foresic._id); 
+        await user.save();
        return  res.status(201).json({message:"report created"})
 
       }

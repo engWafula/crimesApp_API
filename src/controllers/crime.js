@@ -17,6 +17,9 @@ exports.addCrime = async (req,res)=>{
     })
     await crime.save()
 
+    user.crimes.push(crime._id); 
+      await user.save();
+
     res.status(201).json({message:"crime created",data:crime})
    } catch (error) {
     console.log(error)

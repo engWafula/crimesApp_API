@@ -1,5 +1,5 @@
 const User = require("../models/user")
-
+const {sendEmails} = require("../services/emails")
 const bycrpt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
@@ -43,7 +43,11 @@ exports.signUp = async (req,res)=>{
   try {
     const {name,email,password,role} = req.body
     const user = await User.findOne({email:email})
+    const admin = await User.findOne({_id:req.userId,role:"admin"})
+    if(!admin){
+      return  res.status(401).json({message:"You are not authorised to register a user"})
 
+    }
     if(user){
       return  res.status(401).json({message:"User with that email already exists"})
     }
@@ -57,6 +61,17 @@ exports.signUp = async (req,res)=>{
     })
 
     const result = await userData.save()
+    const message = `
+    <p>Welcome to a tamper proof crime management system. Please find your password information below:</p>
+   <ol>
+   <li>Use this password to login:${password}</li>
+   <li>If you were not supposed to have an account with us, please ignore this email.</li>
+   </ol>
+   <p>Thank you,</p>
+   <p>Tamper Proof Team</p>
+`;        
+
+await sendEmails(message, email, "Account Creation")
     res.status(201).json({message:"User Created",userId:result._id})
 
 
