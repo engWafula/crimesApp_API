@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post("/",bookingController.makeBooking)
 
-router.get("/",bookingController.getBookings)
+router.get("/:buyer",bookingController.getBookings)
 
 
 module.exports = router 
