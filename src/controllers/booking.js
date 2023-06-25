@@ -27,7 +27,7 @@ exports.makeBooking = async(req,res)=>{
 exports.getBookings = async(req,res)=>{
     try {
         const {buyer}= req.params
-        const bookings = await Bookings.findOne({buyer:buyer})
+        const bookings = await Bookings.find({buyer:buyer})
         res.status(200).json({data:bookings})
 
     } catch (error) {
