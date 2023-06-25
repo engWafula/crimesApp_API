@@ -17,7 +17,7 @@ exports.addForensics = async(req,res)=>{
           description:description,
           photos:photos
         })
-  
+        
         await foresic.save()
         user.forensics.push(foresic._id); 
         await user.save();
