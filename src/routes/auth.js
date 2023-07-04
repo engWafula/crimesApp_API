@@ -8,6 +8,7 @@ router.post("/signup",isAuth,authController.signUp)
 
 router.post("/login",authController.Login)
 
+router.post("/delete/account/:id",authController.deleteUser)
 
 
 module.exports = router 

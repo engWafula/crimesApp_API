@@ -41,7 +41,7 @@ exports.Login = async (req,res,next)=>{
 
 exports.signUp = async (req,res)=>{
   try {
-    const {name,email,password,role} = req.body
+    const {name,email,password,role,id} = req.body
     const user = await User.findOne({email:email})
     const admin = await User.findOne({_id:req.userId,role:"admin"})
     if(!admin){
@@ -57,7 +57,8 @@ exports.signUp = async (req,res)=>{
         email:email,
         password:hashedPassword,
         name:name,
-        role:role
+        role:role,
+        idNumber:id
     })
 
     const result = await userData.save()
@@ -75,5 +76,26 @@ await sendEmails(message, email, "Account Creation")
 
   } catch (error) {
     console.log(error)
+  }
+}
+
+exports.deleteUser = async(req,res)=>{
+  try {
+     const {id} = req.params
+  const user = await User.findById(id)
+     const message = `
+     <p>Your account has been deleted you can nolonger access this system</p>
+    <ol>
+    <li>Contact support</li>
+    <li>If you were not supposed to have an account with us, please ignore this email.</li>
+    </ol>
+ `;        
+ 
+ await sendEmails(message, user.email, "Account Deletion")
+     await User.findByIdAndDelete(id)
+     res.status(201).json({message:"User deleted"})
+  } catch (error) {
+    console.log(error)
+
   }
 }

@@ -12,7 +12,7 @@ exports.sendEmails = async (message,email,subject) => {
       secure:false,
       auth: {
         user: 'wafulaallan5@gmail.com',
-        pass: 'cjjhgabfjavgajkf'
+        pass: 'ubcxstccavwoklzd'
       },
       tls:{
         rejectUnauthorised:false

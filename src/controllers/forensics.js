@@ -15,7 +15,8 @@ exports.addForensics = async(req,res)=>{
         const foresic = new Forensic({
           crimeId:crimeId,
           description:description,
-          photos:photos
+          photos:photos,
+          uploader:req.userId
         })
         
         await foresic.save()
@@ -37,7 +38,7 @@ exports.addForensics = async(req,res)=>{
 
 exports.getForensics = async(req,res)=>{
   try {
-      const data = await Forensic.find().populate('crimeId').sort({ createdAt: -1 });
+      const data = await Forensic.find().populate(['crimeId','uploader']).sort({ createdAt: -1 });
       res.status(200).json({data:data})
   } catch (error) {
     console.log(error)

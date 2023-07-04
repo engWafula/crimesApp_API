@@ -15,6 +15,10 @@ const forensicsSchema = new Schema({
     type: [String], // Make photos an array of strings
     required: false,
   },
+  uploader: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  }
 }, {
   timestamps: true,
 });
