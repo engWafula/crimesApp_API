@@ -5,7 +5,7 @@ const isAuth = require("../middleware/isAuth")
 const router = express.Router()
 
 
-router.get("/",isAuth,userController.getUsers)
+router.get("/",userController.getUsers)
 
 
 module.exports = router 
