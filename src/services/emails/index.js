@@ -14,7 +14,7 @@ exports.sendEmails = async (message,email,subject) => {
         pass: 'ubcxstccavwoklzd'
       },
       tls:{
-        rejectUnauthorised:false
+        rejectUnauthorized: false,
       },
       ignoreTLS: true
     });

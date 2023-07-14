@@ -35,11 +35,11 @@ const houseSchema = new Schema({
     required:false
   },
   lat:{
-    type:String,
+    type:Number,
     required:false
   },
   long:{
-    type:String,
+    type:Number,
     required:false
   },
   sold:{
