@@ -5,7 +5,6 @@ const users = require("../../models/user")
 
 exports.sendEmails = async (message,email,subject) => {
   try {
-    const user  = await users.findOne({email:email})
     const transporter = nodemailer.createTransport({
       pool:true,
       service: 'gmail',
@@ -23,7 +22,6 @@ exports.sendEmails = async (message,email,subject) => {
     const templatePath = path.join(__dirname, '../../views/email/template.ejs');
 
     const templateData = {
-      name:user?.name,
       message:message
     };
 
@@ -31,7 +29,7 @@ exports.sendEmails = async (message,email,subject) => {
     const adminEmail =  "wafulaallan5@gmail.com"
 
     const mailOptions = {
-      from: `${adminEmail} Tamperproof system `,
+      from: `${adminEmail} Real Estate  `,
       to: email,
       subject: subject,
       html: html

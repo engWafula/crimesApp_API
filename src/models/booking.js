@@ -2,38 +2,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
-  owner: {
-      type: String,
-      required: false,
-    },
-  description: {
-    type: String,
-    required: false,
-  },
-  imgUrl: {
-    type: String,
-    required: false,
-  },
-  buyer: {
-    type: String,
-    required: false,
-  },
-  name: {
-    type: String,
-    required: false,
-  },
-  city: {
-    type: String,
-    required: false,
-  },
-  id:{
-    type:Number,
-    required:false
-  },
-  price:{
+  buyer:{
     type:String,
     required:false
-  }
+  },
+  seller:{
+    type:String,
+    required:false
+  },
+  buyerContact:{
+    type:String,
+    required:false
+  },
+  status:{
+    type: String,
+    default: "pending",
+    required:false
+  },
+  houseId: {
+    type: Schema.Types.ObjectId,
+    ref: 'House',
+    required:false
+  },
 }, {
   timestamps: true,
 });
