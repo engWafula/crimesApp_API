@@ -101,7 +101,7 @@ exports.confirmPurchase = async(req,res)=>{
     hous.save()
 
     const message = `
-    <h3>Property Sell Agreement on Immobiler Real Estate decentralised sysytem</h3>
+    <h3>Property Sell Agreement on Skyward Estates decentralised sysytem</h3>
     
     <p>This Property Sell Agreement (hereinafter referred to as the "Agreement") is made and entered into on this ${new Date()} (hereinafter referred to as the "Effective Date") by and between:</p>
     
@@ -163,12 +163,11 @@ exports.confirmPurchase = async(req,res)=>{
     <p>In the event of a default by either Party, the non-defaulting Party shall have the right to pursue any remedies available under applicable law or equity, including specific performance or termination of this Agreement.</p>
     
     <h4>6. GOVERNING LAW AND JURISDICTION</h4>
-    <p>This Agreement shall be governed by and construed in accordance with the laws of [State/Country]. Any disputes arising out of or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts of [State/Country].</p>
+    <p>This Agreement shall be governed by and construed in accordance with the laws of Uganda. Any disputes arising out of or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts of Uganda.</p>
     
     <h4>7. ENTIRE AGREEMENT</h4>
     <p>This Agreement contains the entire understanding between the Parties and supersedes all prior agreements, representations, or understandings, whether oral or written.</p>
     
-    <p>If you have any questions or need further clarification regarding this Agreement or the property purchase, please feel free to contact us at [Contact Information].</p>
     
     <p>Thank you for choosing our services. We wish you many happy years in your new home!</p>    
 `;     
